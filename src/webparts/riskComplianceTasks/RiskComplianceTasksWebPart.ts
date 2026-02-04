@@ -54,7 +54,12 @@ export default class RiskComplianceTasksWebPart extends BaseClientSideWebPart<IR
       this.error = null;
     } catch (err) {
       this.loading = false;
-      this.error = err.message || 'Failed to load compliance tasks';
+      // Type guard for Error object
+      if (err instanceof Error) {
+        this.error = err.message;
+      } else {
+        this.error = 'Failed to load compliance tasks';
+      }
       console.error('Error loading tasks:', err);
     }
 

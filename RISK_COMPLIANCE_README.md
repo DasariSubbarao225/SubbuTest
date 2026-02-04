@@ -268,7 +268,8 @@ When adding new features, follow the project plan phases and ensure:
 ## Support
 
 For issues or questions:
-- Check the BUILD_INSTRUCTIONS.md for setup help
+- Check the BUILD_REQUIREMENTS.md for Node.js version requirements
+- Check the BUILD_INSTRUCTIONS.md for general setup help
 - Review the project plan document for feature specifications
 - Check console for error messages
 - Ensure Node.js 14.x is installed
