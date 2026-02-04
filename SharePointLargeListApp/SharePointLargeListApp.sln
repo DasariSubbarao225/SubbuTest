@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 18
+VisualStudioVersion = 18.3.11415.281 d18.3
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharePointLargeListApp", "SharePointLargeListApp.csproj", "{17345AD4-159D-693B-7F9D-DD6965ECE6AC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{17345AD4-159D-693B-7F9D-DD6965ECE6AC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{17345AD4-159D-693B-7F9D-DD6965ECE6AC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{17345AD4-159D-693B-7F9D-DD6965ECE6AC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{17345AD4-159D-693B-7F9D-DD6965ECE6AC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {66871E6D-D47E-458C-9573-C5323AD836F5}
+	EndGlobalSection
+EndGlobal
