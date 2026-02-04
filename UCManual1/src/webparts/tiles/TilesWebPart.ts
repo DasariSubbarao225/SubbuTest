@@ -140,7 +140,8 @@ export default class TilesWebPart extends BaseClientSideWebPart<ITilesWebPartPro
     } catch (error) {
       console.error('[TilesWebPart] CRITICAL ERROR in render():', error);
       console.error('[TilesWebPart] Error stack:', (error as Error).stack);
-      this.domElement.innerHTML = `<div style="padding: 20px; color: red;"><h3>Critical Error</h3><p>${(error as Error).message}</p><p>Check console for details</p></div>`;
+      const message = 'Critical Error. Check console for details.';
+      (this.domElement as HTMLElement).textContent = message;
     }
   }
 
