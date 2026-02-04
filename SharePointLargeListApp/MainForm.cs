@@ -21,14 +21,6 @@ namespace SharePointLargeListApp
             _logger = new Logger();
         }
 
-        private void AuthMethod_CheckedChanged(object? sender, EventArgs e)
-        {
-            pnlModernAuth.Visible = rbModernAuth.Checked;
-            pnlUsernamePassword.Visible = rbUsernamePassword.Checked;
-            pnlClientSecret.Visible = rbClientSecret.Checked;
-            // Interactive authentication doesn't need any input panels - it will open browser
-        }
-
         private async void btnTestConnection_Click(object? sender, EventArgs e)
         {
             try
@@ -46,57 +38,8 @@ namespace SharePointLargeListApp
                 var authService = new AuthenticationService();
                 ClientContext? context = null;
 
-                if (rbInteractive.Checked)
-                {
-                    // Interactive browser-based authentication - no credentials needed
-                    lblConnectionStatus.Text = "Opening browser for authentication...";
-                    context = await authService.GetContextInteractive(txtSiteUrl.Text.Trim());
-                }
-                else if (rbModernAuth.Checked)
-                {
-                    if (string.IsNullOrWhiteSpace(txtClientId.Text) || string.IsNullOrWhiteSpace(txtTenantId.Text))
-                    {
-                        MessageBox.Show("Please enter Client ID and Tenant ID.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        return;
-                    }
-
-                    context = await authService.GetContextWithMSAL(
-                        txtSiteUrl.Text.Trim(),
-                        txtClientId.Text.Trim(),
-                        txtTenantId.Text.Trim()
-                    );
-                }
-                else if (rbUsernamePassword.Checked)
-                {
-                    if (string.IsNullOrWhiteSpace(txtUsername.Text) || string.IsNullOrWhiteSpace(txtPassword.Text))
-                    {
-                        MessageBox.Show("Please enter Username and Password.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        return;
-                    }
-
-                    context = authService.GetContextWithCredentials(
-                        txtSiteUrl.Text.Trim(),
-                        txtUsername.Text.Trim(),
-                        txtPassword.Text
-                    );
-                }
-                else if (rbClientSecret.Checked)
-                {
-                    if (string.IsNullOrWhiteSpace(txtClientIdSecret.Text) ||
-                        string.IsNullOrWhiteSpace(txtClientSecret.Text) ||
-                        string.IsNullOrWhiteSpace(txtTenantIdSecret.Text))
-                    {
-                        MessageBox.Show("Please enter Client ID, Client Secret, and Tenant ID.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        return;
-                    }
-
-                    context = await authService.GetContextWithClientSecret(
-                        txtSiteUrl.Text.Trim(),
-                        txtClientIdSecret.Text.Trim(),
-                        txtClientSecret.Text,
-                        txtTenantIdSecret.Text.Trim()
-                    );
-                }
+                lblConnectionStatus.Text = "Opening browser for authentication...";
+                context = await authService.GetContextInteractive(txtSiteUrl.Text.Trim());
 
                 if (context != null)
                 {
@@ -243,37 +186,7 @@ namespace SharePointLargeListApp
             try
             {
                 var authService = new AuthenticationService();
-
-                if (rbInteractive.Checked)
-                {
-                    // Interactive browser-based authentication
-                    _context = await authService.GetContextInteractive(txtSiteUrl.Text.Trim());
-                }
-                else if (rbModernAuth.Checked)
-                {
-                    _context = await authService.GetContextWithMSAL(
-                        txtSiteUrl.Text.Trim(),
-                        txtClientId.Text.Trim(),
-                        txtTenantId.Text.Trim()
-                    );
-                }
-                else if (rbUsernamePassword.Checked)
-                {
-                    _context = authService.GetContextWithCredentials(
-                        txtSiteUrl.Text.Trim(),
-                        txtUsername.Text.Trim(),
-                        txtPassword.Text
-                    );
-                }
-                else if (rbClientSecret.Checked)
-                {
-                    _context = await authService.GetContextWithClientSecret(
-                        txtSiteUrl.Text.Trim(),
-                        txtClientIdSecret.Text.Trim(),
-                        txtClientSecret.Text,
-                        txtTenantIdSecret.Text.Trim()
-                    );
-                }
+                _context = await authService.GetContextInteractive(txtSiteUrl.Text.Trim());
 
                 if (_context != null)
                 {
