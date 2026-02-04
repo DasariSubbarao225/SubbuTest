@@ -1,0 +1,18 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "vse-3-tiles-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/vse3Tiles/Vse3TilesWebPart.js",
+          "manifest": "./src/webparts/vse3Tiles/Vse3TilesWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "Vse3TilesWebPartStrings": "lib/webparts/vse3Tiles/loc/{locale}.js"
+  }
+}
