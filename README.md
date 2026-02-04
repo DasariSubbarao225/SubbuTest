@@ -1,10 +1,16 @@
-# vse-3-tiles-webpart
+# SubbuTest - SharePoint Framework Web Parts Collection
 
 ## Summary
 
-A modern SharePoint Framework (SPFx) web part that displays three configurable tiles with images, titles, descriptions, and links. Perfect for highlighting important resources or actions on your SharePoint page with full accessibility support and responsive design.
+A collection of SharePoint Framework (SPFx) web parts for modern SharePoint sites.
 
-## Features
+### Included Web Parts:
+
+1. **VSE 3 Tiles Web Part** - A modern SPFx web part that displays three configurable tiles with images, titles, descriptions, and links. Perfect for highlighting important resources or actions on your SharePoint page with full accessibility support and responsive design.
+
+2. **Risk Compliance Tasks Web Part** - A comprehensive task management web part for risk and compliance teams. Displays tasks in a tile-based view with color-coded priorities, status management, progress tracking, and responsive design. See [RISK_COMPLIANCE_README.md](./RISK_COMPLIANCE_README.md) for details.
+
+## VSE 3 Tiles Features
 
 - ✅ **Three Configurable Tiles**: Each with title, description, image, link, and custom styling
 - ✅ **Responsive Design**: 3 columns on desktop, 2 on tablet, 1 on mobile

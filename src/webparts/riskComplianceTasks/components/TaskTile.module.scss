@@ -1,0 +1,252 @@
+/**
+ * TaskTile Styles
+ * Phase 2.2 - UI/UX Design with color coding and responsive design
+ */
+
+.taskTile {
+  background: #ffffff;
+  border-radius: 8px;
+  padding: 16px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  border-left: 4px solid transparent;
+  
+  /* Phase 2.1 - Hover effects on tiles */
+  &:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    transform: translateY(-2px);
+  }
+
+  /* Accessibility - Focus indicators */
+  &:focus {
+    outline: 2px solid #0078d4;
+    outline-offset: 2px;
+  }
+
+  /* Phase 2.2 - Color Coding */
+  &.priorityHigh {
+    border-left-color: #d13438; /* Red for High priority/Overdue */
+  }
+
+  &.priorityMedium {
+    border-left-color: #ffaa44; /* Yellow for Medium priority */
+  }
+
+  &.priorityLow {
+    border-left-color: #10893e; /* Green for Low priority/Completed */
+  }
+}
+
+.tileHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.taskId {
+  font-size: 12px;
+  color: #666666;
+  font-weight: 500;
+}
+
+.priorityBadge {
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 600;
+  color: #ffffff;
+  
+  &.priorityHigh {
+    background-color: #d13438;
+  }
+
+  &.priorityMedium {
+    background-color: #ffaa44;
+  }
+
+  &.priorityLow {
+    background-color: #10893e;
+  }
+}
+
+.taskTitle {
+  margin: 0 0 8px 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: #323130;
+  line-height: 1.4;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.taskDescription {
+  margin: 0 0 12px 0;
+  font-size: 13px;
+  color: #605e5c;
+  line-height: 1.5;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+
+.statusRow {
+  margin-bottom: 12px;
+}
+
+.statusBadge {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+
+  /* Status colors based on Phase 2.1.3 */
+  &.statusNotStarted {
+    background-color: #edebe9;
+    color: #323130;
+  }
+
+  &.statusInProgress {
+    background-color: #c7e0f4;
+    color: #004578;
+  }
+
+  &.statusCompleted {
+    background-color: #dff6dd;
+    color: #094c09;
+  }
+
+  &.statusOverdue {
+    background-color: #fde7e9;
+    color: #a4262c;
+  }
+
+  &.statusAtRisk {
+    background-color: #fff4ce;
+    color: #8a5100;
+  }
+}
+
+.progressRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.progressBar {
+  flex: 1;
+  height: 6px;
+  background-color: #edebe9;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.progressFill {
+  height: 100%;
+  background: linear-gradient(90deg, #0078d4 0%, #106ebe 100%);
+  border-radius: 3px;
+  transition: width 0.3s ease;
+}
+
+.progressText {
+  font-size: 11px;
+  font-weight: 600;
+  color: #605e5c;
+  min-width: 35px;
+  text-align: right;
+}
+
+.tileFooter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 8px;
+  border-top: 1px solid #edebe9;
+}
+
+.assigneeInfo,
+.dueDateInfo {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px;
+  color: #605e5c;
+}
+
+.assigneeIcon,
+.dueDateIcon {
+  font-size: 14px;
+}
+
+.assigneeName,
+.dueDateText {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Phase 2.2 - Responsive Design */
+/* Mobile-friendly adjustments */
+@media (max-width: 640px) {
+  .taskTile {
+    padding: 12px;
+  }
+
+  .taskTitle {
+    font-size: 14px;
+  }
+
+  .taskDescription {
+    font-size: 12px;
+    -webkit-line-clamp: 2;
+  }
+
+  .tileFooter {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+}
+
+/* Theme Support - Dark Mode */
+@media (prefers-color-scheme: dark) {
+  .taskTile {
+    background: #292827;
+    color: #ffffff;
+  }
+
+  .taskTitle {
+    color: #ffffff;
+  }
+
+  .taskDescription {
+    color: #d2d0ce;
+  }
+
+  .taskId {
+    color: #a19f9d;
+  }
+
+  .progressBar {
+    background-color: #3b3a39;
+  }
+
+  .tileFooter {
+    border-top-color: #3b3a39;
+  }
+
+  .assigneeName,
+  .dueDateText {
+    color: #d2d0ce;
+  }
+}
