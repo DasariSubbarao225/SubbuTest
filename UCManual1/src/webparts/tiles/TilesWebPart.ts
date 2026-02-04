@@ -49,6 +49,13 @@ export default class TilesWebPart extends BaseClientSideWebPart<ITilesWebPartPro
   private _isDarkTheme: boolean = false;
   private _semanticColors: any = {};
 
+  protected onInit(): Promise<void> {
+    console.log('[TilesWebPart] onInit called');
+    console.log('[TilesWebPart] properties:', this.properties);
+    console.log('[TilesWebPart] displayMode:', this.displayMode);
+    return Promise.resolve();
+  }
+
   private _validateUrl(value: string): string {
     if (!value) {
       return '';
@@ -66,75 +73,105 @@ export default class TilesWebPart extends BaseClientSideWebPart<ITilesWebPartPro
   }
 
   public render(): void {
-    const tile1: ITileData = {
-      title: this.properties.tile1Title || '',
-      imageUrl: this.properties.tile1ImageUrl || '',
-      altText: this.properties.tile1AltText || '',
-      description: this.properties.tile1Description || '',
-      linkUrl: this.properties.tile1LinkUrl || '',
-      openInNewTab: this.properties.tile1OpenInNewTab || false,
-      backgroundColor: this.properties.tile1BackgroundColor || ''
-    };
+    try {
+      console.log('[TilesWebPart] render() called');
+      console.log('[TilesWebPart] Current properties:', this.properties);
+      console.log('[TilesWebPart] DisplayMode value:', this.displayMode);
+      console.log('[TilesWebPart] isDarkTheme:', this._isDarkTheme);
 
-    const tile2: ITileData = {
-      title: this.properties.tile2Title || '',
-      imageUrl: this.properties.tile2ImageUrl || '',
-      altText: this.properties.tile2AltText || '',
-      description: this.properties.tile2Description || '',
-      linkUrl: this.properties.tile2LinkUrl || '',
-      openInNewTab: this.properties.tile2OpenInNewTab || false,
-      backgroundColor: this.properties.tile2BackgroundColor || ''
-    };
+      // Safely build tile objects
+      const tile1: ITileData = {
+        title: this.properties.tile1Title,
+        imageUrl: this.properties.tile1ImageUrl,
+        altText: this.properties.tile1AltText,
+        description: this.properties.tile1Description,
+        linkUrl: this.properties.tile1LinkUrl,
+        openInNewTab: this.properties.tile1OpenInNewTab,
+        backgroundColor: this.properties.tile1BackgroundColor
+      };
 
-    const tile3: ITileData = {
-      title: this.properties.tile3Title || '',
-      imageUrl: this.properties.tile3ImageUrl || '',
-      altText: this.properties.tile3AltText || '',
-      description: this.properties.tile3Description || '',
-      linkUrl: this.properties.tile3LinkUrl || '',
-      openInNewTab: this.properties.tile3OpenInNewTab || false,
-      backgroundColor: this.properties.tile3BackgroundColor || ''
-    };
+      const tile2: ITileData = {
+        title: this.properties.tile2Title,
+        imageUrl: this.properties.tile2ImageUrl,
+        altText: this.properties.tile2AltText,
+        description: this.properties.tile2Description,
+        linkUrl: this.properties.tile2LinkUrl,
+        openInNewTab: this.properties.tile2OpenInNewTab,
+        backgroundColor: this.properties.tile2BackgroundColor
+      };
 
-    const element: React.ReactElement<ITilesProps> = React.createElement(
-      Tiles,
-      {
+      const tile3: ITileData = {
+        title: this.properties.tile3Title,
+        imageUrl: this.properties.tile3ImageUrl,
+        altText: this.properties.tile3AltText,
+        description: this.properties.tile3Description,
+        linkUrl: this.properties.tile3LinkUrl,
+        openInNewTab: this.properties.tile3OpenInNewTab,
+        backgroundColor: this.properties.tile3BackgroundColor
+      };
+
+      console.log('[TilesWebPart] Tile 1:', tile1);
+      console.log('[TilesWebPart] Tile 2:', tile2);
+      console.log('[TilesWebPart] Tile 3:', tile3);
+
+      const propsToPass: ITilesProps = {
         tile1: tile1,
         tile2: tile2,
         tile3: tile3,
         isDarkTheme: this._isDarkTheme,
         hasTeamsContext: !!this.context.sdks.microsoftTeams,
         semanticColors: this._semanticColors,
-        enableAnalytics: this.properties.enableAnalytics || false,
-        displayMode: this.displayMode
-      }
-    );
+        enableAnalytics: this.properties.enableAnalytics,
+        displayMode: this.displayMode || 2
+      };
 
-    ReactDom.render(element, this.domElement);
-  }
+      console.log('[TilesWebPart] Props to pass to component:', propsToPass);
 
-  protected onInit(): Promise<void> {
-    return Promise.resolve();
+      const element: React.ReactElement<ITilesProps> = React.createElement(
+        Tiles,
+        propsToPass
+      );
+
+      console.log('[TilesWebPart] React element created successfully');
+
+      ReactDom.render(element, this.domElement);
+      
+      console.log('[TilesWebPart] Component rendered to DOM');
+    } catch (error) {
+      console.error('[TilesWebPart] CRITICAL ERROR in render():', error);
+      console.error('[TilesWebPart] Error stack:', (error as Error).stack);
+      this.domElement.innerHTML = `<div style="padding: 20px; color: red;"><h3>Critical Error</h3><p>${(error as Error).message}</p><p>Check console for details</p></div>`;
+    }
   }
 
   protected onThemeChanged(currentTheme: IReadonlyTheme | undefined): void {
+    console.log('[TilesWebPart] onThemeChanged called with theme:', currentTheme);
+    
     if (!currentTheme) {
+      console.warn('[TilesWebPart] currentTheme is undefined, returning');
       return;
     }
 
-    this._isDarkTheme = !!currentTheme.isInverted;
-    const {
-      semanticColors
-    } = currentTheme;
+    try {
+      this._isDarkTheme = !!currentTheme.isInverted;
+      const { semanticColors } = currentTheme;
 
-    if (semanticColors) {
-      this._semanticColors = semanticColors;
-      this.domElement.style.setProperty('--bodyText', semanticColors.bodyText || null);
-      this.domElement.style.setProperty('--link', semanticColors.link || null);
-      this.domElement.style.setProperty('--linkHovered', semanticColors.linkHovered || null);
+      console.log('[TilesWebPart] isDarkTheme set to:', this._isDarkTheme);
+      console.log('[TilesWebPart] semanticColors:', semanticColors);
+
+      if (semanticColors) {
+        this._semanticColors = semanticColors;
+        this.domElement.style.setProperty('--bodyText', semanticColors.bodyText || null);
+        this.domElement.style.setProperty('--link', semanticColors.link || null);
+        this.domElement.style.setProperty('--linkHovered', semanticColors.linkHovered || null);
+        console.log('[TilesWebPart] Theme CSS variables set');
+      }
+
+      this.render();
+      console.log('[TilesWebPart] onThemeChanged completed successfully');
+    } catch (error) {
+      console.error('[TilesWebPart] Error in onThemeChanged:', error);
     }
-
-    this.render();
   }
 
   protected onDispose(): void {
