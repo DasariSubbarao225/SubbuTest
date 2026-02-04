@@ -1,0 +1,1 @@
+{\n  "name": "SubbuTest",\n  "version": "1.0.0",\n  "workspaces": [\n    "frontend/*",\n    "backend/*"\n  ]\n}
