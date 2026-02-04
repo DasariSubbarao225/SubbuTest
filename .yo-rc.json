@@ -1,0 +1,15 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "version": "1.11.0",
+    "libraryName": "vse-3-tiles-webpart",
+    "libraryId": "a2da273c-3f67-490b-a4ea-51faa8e0a188",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionName": "vse3-tiles-webpart",
+    "componentType": "webpart",
+    "framework": "react",
+    "componentName": "vse3Tiles",
+    "isCreatingSolution": true,
+    "isDomainIsolated": false
+  }
+}
