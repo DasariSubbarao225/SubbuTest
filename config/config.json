@@ -9,6 +9,14 @@
           "manifest": "./src/webparts/vse3Tiles/Vse3TilesWebPart.manifest.json"
         }
       ]
+    },
+    "risk-compliance-tasks-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/riskComplianceTasks/RiskComplianceTasksWebPart.js",
+          "manifest": "./src/webparts/riskComplianceTasks/RiskComplianceTasksWebPart.manifest.json"
+        }
+      ]
     }
   },
   "externals": {},
