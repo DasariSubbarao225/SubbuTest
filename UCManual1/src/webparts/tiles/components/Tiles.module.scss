@@ -1,0 +1,189 @@
+@import '~@fluentui/react/dist/sass/References.scss';
+
+.tiles {
+  overflow: hidden;
+  padding: 1.5rem;
+  color: "[theme:bodyText, default: #323130]";
+  color: var(--bodyText);
+  
+  &.teams {
+    font-family: $ms-font-family-fallbacks;
+  }
+}
+
+.tilesContainer {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  width: 100%;
+  
+  // Tablet: 2 columns
+  @media (max-width: 1024px) and (min-width: 641px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  // Mobile: 1 column
+  @media (max-width: 640px) {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}
+
+.tile {
+  display: flex;
+  flex-direction: column;
+  background-color: "[theme:cardBackground, default: #ffffff]";
+  background-color: var(--cardBackground, #ffffff);
+  border: 1px solid "[theme:cardBorder, default: #edebe9]";
+  border: 1px solid var(--cardBorder, #edebe9);
+  border-radius: 8px;
+  overflow: hidden;
+  transition: all 0.2s ease-in-out;
+  text-decoration: none;
+  color: inherit;
+  box-shadow: 0 1.6px 3.6px 0 rgba(0, 0, 0, 0.132), 0 0.3px 0.9px 0 rgba(0, 0, 0, 0.108);
+  
+  // Hover effect for linked tiles
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 3.2px 7.2px 0 rgba(0, 0, 0, 0.132), 0 0.6px 1.8px 0 rgba(0, 0, 0, 0.108);
+    border-color: "[theme:link, default: #0078d4]";
+    border-color: var(--link, #0078d4);
+  }
+  
+  // Focus styles for accessibility
+  &:focus {
+    outline: 2px solid "[theme:link, default: #0078d4]";
+    outline: 2px solid var(--link, #0078d4);
+    outline-offset: 2px;
+  }
+  
+  // Keyboard focus visible
+  &:focus-visible {
+    outline: 2px solid "[theme:link, default: #0078d4]";
+    outline: 2px solid var(--link, #0078d4);
+    outline-offset: 2px;
+  }
+}
+
+.tileImageContainer {
+  width: 100%;
+  height: 180px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f3f2f1;
+  
+  @media (max-width: 640px) {
+    height: 150px;
+  }
+}
+
+.tileImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.2s ease-in-out;
+  
+  .tile:hover & {
+    transform: scale(1.05);
+  }
+}
+
+.tileContent {
+  padding: 1.25rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.tileTitle {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+  line-height: 1.4;
+  color: "[theme:bodyText, default: #323130]";
+  color: var(--bodyText, #323130);
+  
+  @media (max-width: 640px) {
+    font-size: 1.125rem;
+  }
+}
+
+.tileDescription {
+  margin: 0;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: "[theme:bodySubtext, default: #605e5c]";
+  color: var(--bodyText, #605e5c);
+  opacity: 0.85;
+  flex: 1;
+}
+
+// Empty tile placeholder styles
+.emptyTile {
+  background-color: #faf9f8;
+  border-style: dashed;
+  border-color: #c8c6c4;
+  min-height: 280px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  &:hover {
+    transform: none;
+    box-shadow: 0 1.6px 3.6px 0 rgba(0, 0, 0, 0.132), 0 0.3px 0.9px 0 rgba(0, 0, 0, 0.108);
+    border-color: #c8c6c4;
+  }
+}
+
+.placeholderContent {
+  text-align: center;
+  padding: 2rem;
+}
+
+.placeholderIcon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  opacity: 0.6;
+}
+
+.placeholderTitle {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #605e5c;
+}
+
+.placeholderText {
+  margin: 0;
+  font-size: 0.875rem;
+  color: #8a8886;
+  line-height: 1.5;
+}
+
+// High contrast mode support
+@media (prefers-contrast: high) {
+  .tile {
+    border-width: 2px;
+    
+    &:focus,
+    &:focus-visible {
+      outline-width: 3px;
+    }
+  }
+}
+
+// Dark theme adjustments
+[data-theme="dark"] {
+  .emptyTile {
+    background-color: #292827;
+    border-color: #484644;
+  }
+  
+  .tileImageContainer {
+    background-color: #3b3a39;
+  }
+}

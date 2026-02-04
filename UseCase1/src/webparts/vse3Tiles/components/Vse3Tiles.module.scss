@@ -1,0 +1,185 @@
+/* Theme variables - these will be overridden by Office UI Fabric at runtime */
+$ms-color-neutralLighter: #f4f4f4;
+$ms-color-neutralLight: #eaeaea;
+$ms-color-neutralLighterAlt: #fafafa;
+$ms-color-neutralTertiary: #c8c8c8;
+$ms-color-neutralSecondary: #666666;
+$ms-color-neutralPrimary: #333333;
+$ms-color-themePrimary: #0078d4;
+$ms-color-neutralDark: #201f1f;
+$ms-color-neutralQuaternary: #3b3a39;
+$ms-color-white: #ffffff;
+
+.vse3Tiles {
+  width: 100%;
+  padding: 20px 0;
+
+  .tilesContainer {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+
+    /* Tablet: 2 columns */
+    @media (max-width: 1024px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* Mobile: 1 column */
+    @media (max-width: 640px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .tile {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    background-color: $ms-color-neutralLighter;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    text-decoration: none;
+    color: inherit;
+    min-height: 280px;
+
+    &:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    &:focus {
+      outline: 2px solid $ms-color-themePrimary;
+      outline-offset: 2px;
+    }
+
+    /* For clickable tiles */
+    &[href] {
+      cursor: pointer;
+    }
+  }
+
+  .tileEmpty {
+    background-color: $ms-color-neutralLight;
+    border: 2px dashed $ms-color-neutralTertiary;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 280px;
+
+    &:hover {
+      transform: none;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+  }
+
+  .tilePlaceholder {
+    text-align: center;
+    padding: 40px;
+    color: $ms-color-neutralSecondary;
+
+    .placeholderIcon {
+      display: block;
+      font-size: 48px;
+      margin-bottom: 16px;
+    }
+
+    .placeholderText {
+      display: block;
+      font-size: 18px;
+      font-weight: 600;
+    }
+  }
+
+  .tileContent {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  .tileImageContainer {
+    width: 100%;
+    height: 180px;
+    overflow: hidden;
+    background-color: $ms-color-neutralLighterAlt;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .tileImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .tileTextContainer {
+    padding: 20px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .tileTitle {
+    font-size: 20px;
+    font-weight: 600;
+    color: $ms-color-neutralPrimary;
+    margin: 0 0 12px 0;
+    line-height: 1.3;
+  }
+
+  .tileDescription {
+    font-size: 14px;
+    color: $ms-color-neutralSecondary;
+    margin: 0;
+    line-height: 1.5;
+    flex: 1;
+  }
+
+  /* Dark theme support */
+  @media (prefers-color-scheme: dark) {
+    .tile {
+      background-color: $ms-color-neutralDark;
+
+      &:hover {
+        box-shadow: 0 4px 12px rgba(255, 255, 255, 0.1);
+      }
+    }
+
+    .tileEmpty {
+      background-color: $ms-color-neutralQuaternary;
+      border-color: $ms-color-neutralTertiary;
+    }
+
+    .tileTitle {
+      color: $ms-color-white;
+    }
+
+    .tileDescription {
+      color: $ms-color-neutralLight;
+    }
+
+    .tileImageContainer {
+      background-color: $ms-color-neutralQuaternary;
+    }
+
+    .tilePlaceholder {
+      color: $ms-color-neutralLight;
+    }
+  }
+
+  /* High contrast mode support */
+  @media (prefers-contrast: high) {
+    .tile {
+      border: 2px solid;
+
+      &:focus {
+        outline-width: 3px;
+      }
+    }
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "use-case-one-tiles-project-client-side-solution",
+    "id": "a27e16b6-d82a-4b9f-bef1-a4441109aa39",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.21.1"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "UseCaseOneTilesProject description"
+      },
+      "longDescription": {
+        "default": "UseCaseOneTilesProject description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "use-case-one-tiles-project Feature",
+        "description": "The feature that activates elements of the use-case-one-tiles-project solution.",
+        "id": "3b9243e4-d8ba-46b4-98ae-70d6af9ca50c",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/use-case-one-tiles-project.sppkg"
+  }
+}

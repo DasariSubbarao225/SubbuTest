@@ -1,0 +1,18 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "plusBeta": false,
+    "isCreatingSolution": true,
+    "nodeVersion": "22.22.0",
+    "sdksVersions": {},
+    "version": "1.21.1",
+    "libraryName": "use-case-one-tiles-project",
+    "libraryId": "a27e16b6-d82a-4b9f-bef1-a4441109aa39",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionName": "UseCaseOneTilesProject",
+    "solutionShortDescription": "UseCaseOneTilesProject description",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "componentType": "webpart"
+  }
+}
