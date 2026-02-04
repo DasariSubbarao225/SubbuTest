@@ -166,7 +166,12 @@ export default class RiskComplianceTasksWebPart extends BaseClientSideWebPart<IR
     
     // Reload tasks when data source changes
     if (propertyPath === 'useMockData' || propertyPath === 'dataSource') {
-      this._loadTasks().catch(console.error);
+      this._loadTasks().catch((err: Error) => {
+        console.error('Error reloading tasks:', err);
+        this._error = err.message || 'Failed to reload tasks';
+        this._loading = false;
+        this.render();
+      });
     }
   }
 }

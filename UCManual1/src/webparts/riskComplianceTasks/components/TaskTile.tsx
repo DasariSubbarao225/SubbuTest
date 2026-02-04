@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { IComplianceTask } from '../types/IComplianceTask';
 import styles from './TaskTile.module.scss';
+import { escape } from '@microsoft/sp-lodash-subset';
 
 export interface ITaskTileProps {
   task: IComplianceTask;
@@ -92,13 +93,6 @@ export const TaskTile: React.FC<ITaskTileProps> = ({ task, onClick }) => {
     }
   };
 
-  // Sanitize text to prevent XSS
-  const escapeHtml = (text: string): string => {
-    const div = document.createElement('div');
-    div.textContent = text;
-    return div.innerHTML;
-  };
-
   return (
     <div 
       className={`${styles.taskTile} ${getPriorityColorClass()}`}
@@ -115,9 +109,9 @@ export const TaskTile: React.FC<ITaskTileProps> = ({ task, onClick }) => {
         </span>
       </div>
       
-      <h3 className={styles.taskTitle}>{escapeHtml(task.title)}</h3>
+      <h3 className={styles.taskTitle}>{escape(task.title)}</h3>
       
-      <p className={styles.taskDescription}>{escapeHtml(task.description)}</p>
+      <p className={styles.taskDescription}>{escape(task.description)}</p>
       
       <div className={styles.statusRow}>
         <span className={`${styles.statusBadge} ${getStatusClass()}`}>
@@ -138,7 +132,7 @@ export const TaskTile: React.FC<ITaskTileProps> = ({ task, onClick }) => {
       <div className={styles.tileFooter}>
         <div className={styles.assigneeInfo}>
           <span className={styles.assigneeIcon}>👤</span>
-          <span className={styles.assigneeName}>{escapeHtml(task.assignee)}</span>
+          <span className={styles.assigneeName}>{escape(task.assignee)}</span>
         </div>
         <div className={styles.dueDateInfo}>
           <span className={styles.dueDateIcon}>📅</span>
