@@ -99,13 +99,14 @@ export default class Vse3TilesWebPart extends BaseClientSideWebPart<IVse3TilesWe
       return '';
     }
     
-    // Basic URL validation
-    const urlPattern = /^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/;
-    if (!urlPattern.test(value)) {
+    // Use URL constructor for proper validation
+    try {
+      new URL(value);
+      return '';
+    } catch {
+      // If URL constructor fails, it's not a valid URL
       return strings.InvalidUrlMessage;
     }
-    
-    return '';
   }
 
   protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {

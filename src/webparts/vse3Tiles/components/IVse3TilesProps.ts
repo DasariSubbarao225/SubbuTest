@@ -11,5 +11,5 @@ export interface ITileConfig {
 export interface IVse3TilesProps {
   tiles: ITileConfig[];
   enableAnalytics: boolean;
-  themeVariant: any;
+  themeVariant: any; // IReadonlyTheme from SPFx - using any for SPFx 1.11.0 compatibility
 }
