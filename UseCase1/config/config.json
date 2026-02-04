@@ -21,6 +21,7 @@
   },
   "externals": {},
   "localizedResources": {
-    "Vse3TilesWebPartStrings": "lib/webparts/vse3Tiles/loc/{locale}.js"
+    "Vse3TilesWebPartStrings": "lib/webparts/vse3Tiles/loc/{locale}.js",
+    "RiskComplianceTasksWebPartStrings": "lib/webparts/riskComplianceTasks/loc/{locale}.js"
   }
 }
