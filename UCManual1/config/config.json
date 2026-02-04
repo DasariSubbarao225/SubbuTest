@@ -9,10 +9,19 @@
           "manifest": "./src/webparts/tiles/TilesWebPart.manifest.json"
         }
       ]
+    },
+    "risk-compliance-tasks-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/riskComplianceTasks/RiskComplianceTasksWebPart.js",
+          "manifest": "./src/webparts/riskComplianceTasks/RiskComplianceTasksWebPart.manifest.json"
+        }
+      ]
     }
   },
   "externals": {},
   "localizedResources": {
-    "TilesWebPartStrings": "lib/webparts/tiles/loc/{locale}.js"
+    "TilesWebPartStrings": "lib/webparts/tiles/loc/{locale}.js",
+    "RiskComplianceTasksWebPartStrings": "lib/webparts/riskComplianceTasks/loc/{locale}.js"
   }
 }

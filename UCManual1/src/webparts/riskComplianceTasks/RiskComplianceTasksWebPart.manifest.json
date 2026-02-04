@@ -1,0 +1,24 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
+  "id": "b8e5a8c2-4f6d-4e3a-9c7b-1d8e9f2a3b4c",
+  "alias": "RiskComplianceTasksWebPart",
+  "componentType": "WebPart",
+
+  "version": "*",
+  "manifestVersion": 2,
+
+  "requiresCustomScript": false,
+  "supportedHosts": ["SharePointWebPart", "TeamsPersonalApp", "TeamsTab"],
+
+  "preconfiguredEntries": [{
+    "groupId": "5c03119e-3074-46fd-976b-c60198311f70",
+    "group": { "default": "Other" },
+    "title": { "default": "Risk Compliance Tasks" },
+    "description": { "default": "Displays risk and compliance tasks in a tile-based view with priority color coding, status management, and progress tracking" },
+    "officeFabricIconFontName": "TaskManager",
+    "properties": {
+      "useMockData": true,
+      "dataSource": "mockData"
+    }
+  }]
+}
