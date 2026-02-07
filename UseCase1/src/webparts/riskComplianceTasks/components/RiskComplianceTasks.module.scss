@@ -1,0 +1,152 @@
+/**
+ * Main Risk Compliance Tasks Component Styles
+ */
+
+.riskComplianceTasks {
+  padding: 20px;
+  background-color: #faf9f8;
+  min-height: 400px;
+}
+
+.header {
+  margin-bottom: 24px;
+}
+
+.title {
+  margin: 0 0 12px 0;
+  font-size: 24px;
+  font-weight: 600;
+  color: #323130;
+}
+
+.summary {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.summaryItem {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  color: #605e5c;
+}
+
+.summaryIcon {
+  font-size: 16px;
+}
+
+.summaryText {
+  font-weight: 500;
+}
+
+/* Loading state - Phase 3.2 */
+.loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 20px;
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid #edebe9;
+  border-top-color: #0078d4;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.loadingText {
+  margin: 16px 0 0 0;
+  font-size: 14px;
+  color: #605e5c;
+}
+
+/* Error state - Phase 3.2 */
+.error {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.errorIcon {
+  font-size: 48px;
+  margin-bottom: 16px;
+}
+
+.errorTitle {
+  margin: 0 0 8px 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: #a4262c;
+}
+
+.errorMessage {
+  margin: 0;
+  font-size: 14px;
+  color: #605e5c;
+  max-width: 500px;
+}
+
+/* Responsive design */
+@media (max-width: 640px) {
+  .riskComplianceTasks {
+    padding: 16px;
+  }
+
+  .title {
+    font-size: 20px;
+  }
+
+  .summary {
+    gap: 16px;
+  }
+
+  .summaryItem {
+    font-size: 13px;
+  }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  .riskComplianceTasks {
+    background-color: #201f1e;
+  }
+
+  .title {
+    color: #ffffff;
+  }
+
+  .summaryText {
+    color: #d2d0ce;
+  }
+
+  .loadingText {
+    color: #d2d0ce;
+  }
+
+  .errorTitle {
+    color: #f1707b;
+  }
+
+  .errorMessage {
+    color: #d2d0ce;
+  }
+
+  .spinner {
+    border-color: #3b3a39;
+    border-top-color: #0078d4;
+  }
+}
